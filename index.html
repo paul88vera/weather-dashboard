@@ -4,6 +4,7 @@
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="./assets/style.css">
  <title>Weather Dashboard</title>
 </head>
 <body>
@@ -13,53 +14,54 @@
  </header>
 
  <aside>
-  <h2>Search for a City:</h2>
-  <input type="text" class="searchBar"/>
-  <button class="search">Search</button>
+  <h2>Search For A City:</h2>
+  <input type="text" class="searchBar" placeholder=" (e.g. San Antonio)"/>
+  <button class="searchBtn">Search</button>
   <hr/>
-  <button>Saved City Search 1</button>
-  <button>Saved City Search 2</button>
+  <button class="newBtn">Saved City Search 1</button>
+  <button class="newBtn">Saved City Search 2</button>
  </aside>
 
+ <div id="container">
  <section id="cityInfo">
-  <h2>City (date)</h2>
+  <h2>City & date</h2>
   <p>Temp:</p>
   <p>Wind:</p>
   <p>Humidity:</p>
-  <p>UV Index:<span>0.47</span></p>
+  <p>UV Index: <span>0.47</span></p>
  </section>
 
  <section id="weeklyInfo">
   <h3>5-Day Forecast:</h3>
-  <div id="1">
+  <div id="1" class="card">
    <h3>3/31/2021</h3>
    <i>weather icon</i>
    <p>Temp:</p>
    <p>Wind:</p>
    <p>Humidity:</p>
   </div>
-  <div id="2">
+  <div id="2" class="card">
    <h3>3/31/2021</h3>
    <i>weather icon</i>
    <p>Temp:</p>
    <p>Wind:</p>
    <p>Humidity:</p>
   </div>
-  <div id="3">
+  <div id="3" class="card">
    <h3>3/31/2021</h3>
    <i>weather icon</i>
    <p>Temp:</p>
    <p>Wind:</p>
    <p>Humidity:</p>
   </div>
-  <div id="4">
+  <div id="4" class="card">
    <h3>3/31/2021</h3>
    <i>weather icon</i>
    <p>Temp:</p>
    <p>Wind:</p>
    <p>Humidity:</p>
   </div>
-  <div id="5">
+  <div id="5" class="card">
    <h3>3/31/2021</h3>
    <i>weather icon</i>
    <p>Temp:</p>
@@ -67,6 +69,6 @@
    <p>Humidity:</p>
   </div>
  </section>
-
+</div>
 </body>
 </html>
