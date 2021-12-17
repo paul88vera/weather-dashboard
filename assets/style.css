@@ -40,6 +40,14 @@ aside input {
   height: 3em;
   border: solid thin rgb(199, 199, 199);
 }
+button:hover {
+  visibility: 70%;
+  cursor: pointer;
+}
+button:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 13px 0px rgb(99, 99, 99) inset;
+}
 /* ASIDE END */
 /* CITY INFO SECTION START */
 #cityInfo {
