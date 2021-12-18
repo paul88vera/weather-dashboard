@@ -1,47 +1,181 @@
+var searchBtn = document.querySelector("#searchBtn");
+var temp = document.querySelector(".temp0");
+var wind = document.querySelector(".wind0");
+var humidity = document.querySelector(".humidity0");
+var icon = document.querySelector(".icon0");
+var forecastDay = document.querySelector(".card");
+var date1 = document.querySelector(".date1");
+var date2 = document.querySelector(".date2");
+var date3 = document.querySelector(".date3");
+var date4 = document.querySelector(".date4");
+var date5 = document.querySelector(".date5");
+var temp1 = document.querySelector(".temp1");
+var temp2 = document.querySelector(".temp2");
+var temp3 = document.querySelector(".temp3");
+var temp4 = document.querySelector(".temp4");
+var temp5 = document.querySelector(".temp5");
+var wind1 = document.querySelector(".wind1");
+var wind2 = document.querySelector(".wind2");
+var wind3 = document.querySelector(".wind3");
+var wind4 = document.querySelector(".wind4");
+var wind5 = document.querySelector(".wind5");
+var humidity1 = document.querySelector(".humidity1");
+var humidity2 = document.querySelector(".humidity2");
+var humidity3 = document.querySelector(".humidity3");
+var humidity4 = document.querySelector(".humidity4");
+var humidity5 = document.querySelector(".humidity5");
+var icon1 = document.querySelector(".icon1");
+var icon2 = document.querySelector(".icon2");
+var icon3 = document.querySelector(".icon3");
+var icon4 = document.querySelector(".icon4");
+var icon5 = document.querySelector(".icon5");
 
-var searchBtn = document.querySelector('#searchBtn');
-var name = document.querySelector('.name');
-var temp = document.querySelector('.temp');
-var wind = document.querySelector('.wind');
-var humidity = document.querySelector('.humidity');
-var icon = document.querySelector('.icon');
+var getCityInfo = function (city) {
+  var city = document.querySelector("input").value;
+  var name = document.querySelector(".name");
+  var apiUrl =
+    `https://api.openweathermap.org/data/2.5/forecast?q=` +
+    city +
+    `&appid=def04aeb0bc1cff2cbceffb86658aa7d`;
 
+  fetch(apiUrl).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        // main info
+        var nameValue = data.city.name;
+        var dateValue = new Date();
+        var tempValue = data.list[0].main.temp;
+        var windValue = data.list[0].wind.speed;
+        var humidityValue = data.list[0].main.humidity;
 
+        // temperature conversion from kelvin to fahrenheit
+        var tempConverted = Math.trunc(((tempValue - 273.15) * 9) / 5 + 32);
 
-var getCityInfo = function(city){
-  var city = document.querySelector('input').value;
-  
-    var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=` + city + `&appid=def04aeb0bc1cff2cbceffb86658aa7d`;
+        name.textContent =
+          nameValue +
+          " " +
+          (dateValue.getMonth() + 1) +
+          "/" +
+          dateValue.getDate() +
+          "/" +
+          dateValue.getFullYear();
+        temp.textContent = "Temp: " + tempConverted + "°";
+        wind.innerHTML = "Wind: " + windValue + " mph";
+        humidity.innerHTML = "Humidity: " + humidityValue + "%";
 
-    fetch(apiUrl)
-    .then(function(response) {
-      if (response.ok) {
-        response.json().then(function(data) {
-          var nameValue = data.city.name;
-          // var dataValue = data.list[0].
-          var tempValue = data.list[0].main.temp;
-          var windValue = data.list[0].wind.speed;
-          var humidityValue = data.list[0].main.humidity;
-          // var iconValue = data.city.list[0].weather[0].icon;
+        // card 1 info
+        var tempValue1 = data.list[1].main.temp;
+        var windValue1 = data.list[1].wind.speed;
+        var humidityValue1 = data.list[1].main.humidity;
+        var iconValue1 = data.list[1].weather[0].icon;
+        var tempConverted1 = Math.trunc(((tempValue1 - 273.15) * 9) / 5 + 32);
 
-          name.textContent = "City Name: " + nameValue + " "  ;
-          temp.textContent = "Temp: " + tempValue;
-          wind.innerHTML = "Wind: " + windValue + "mph";
-          humidity.innerHTML = "Humidity: " + humidityValue + "%";
-          // icon.innerHTML = iconValue;
-          console.log(nameValue);
-          console.log(tempValue);
-          console.log(windValue);
+        date1.innerHTML =
+          dateValue.getMonth() +
+          1 +
+          "/" +
+          (dateValue.getDate() + 1) +
+          "/" +
+          dateValue.getFullYear();
+        temp1.textContent = "Temp: " + tempConverted1 + "°";
+        wind1.innerHTML = "Wind: " + windValue1 + " mph";
+        humidity1.innerHTML = "Humidity: " + humidityValue1 + "%";
 
-        })
-      } else {
-        alert('error');
-      }
-    });
-  };
+        icon1.src =
+          "http://openweathermap.org/img/wn/" + iconValue1 + "@2x.png";
 
-$('.searchBtn').click(function() {
-  console.log('click');
-  
+        // card 2 info
+        var tempValue2 = data.list[2].main.temp;
+        var windValue2 = data.list[2].wind.speed;
+        var humidityValue2 = data.list[2].main.humidity;
+        var iconValue2 = data.list[2].weather[0].icon;
+        var tempConverted2 = Math.trunc(((tempValue2 - 273.15) * 9) / 5 + 32);
+
+        date2.innerHTML =
+          dateValue.getMonth() +
+          1 +
+          "/" +
+          (dateValue.getDate() + 2) +
+          "/" +
+          dateValue.getFullYear();
+        temp2.textContent = "Temp: " + tempConverted2 + "°";
+        wind2.innerHTML = "Wind: " + windValue2 + " mph";
+        humidity2.innerHTML = "Humidity: " + humidityValue2 + "%";
+
+        icon2.src =
+          "http://openweathermap.org/img/wn/" + iconValue2 + "@2x.png";
+
+        // card 3 info
+        var tempValue3 = data.list[3].main.temp;
+        var windValue3 = data.list[3].wind.speed;
+        var humidityValue3 = data.list[3].main.humidity;
+        var iconValue3 = data.list[3].weather[0].icon;
+        var tempConverted3 = Math.trunc(((tempValue3 - 273.15) * 9) / 5 + 32);
+
+        date3.innerHTML =
+          dateValue.getMonth() +
+          1 +
+          "/" +
+          (dateValue.getDate() + 3) +
+          "/" +
+          dateValue.getFullYear();
+        temp3.textContent = "Temp: " + tempConverted3 + "°";
+        wind3.innerHTML = "Wind: " + windValue3 + " mph";
+        humidity3.innerHTML = "Humidity: " + humidityValue3 + "%";
+
+        icon3.src =
+          "http://openweathermap.org/img/wn/" + iconValue3 + "@2x.png";
+
+        // card 4 info
+        var tempValue4 = data.list[4].main.temp;
+        var windValue4 = data.list[4].wind.speed;
+        var humidityValue4 = data.list[4].main.humidity;
+        var iconValue4 = data.list[4].weather[0].icon;
+        var tempConverted4 = Math.trunc(((tempValue4 - 273.15) * 9) / 5 + 32);
+
+        date4.innerHTML =
+          dateValue.getMonth() +
+          1 +
+          "/" +
+          (dateValue.getDate() + 4) +
+          "/" +
+          dateValue.getFullYear();
+        temp4.textContent = "Temp: " + tempConverted4 + "°";
+        wind4.innerHTML = "Wind: " + windValue4 + " mph";
+        humidity4.innerHTML = "Humidity: " + humidityValue4 + "%";
+
+        icon4.src =
+          "http://openweathermap.org/img/wn/" + iconValue4 + "@2x.png";
+
+        // card 5 info
+        var tempValue5 = data.list[5].main.temp;
+        var windValue5 = data.list[5].wind.speed;
+        var humidityValue5 = data.list[5].main.humidity;
+        var iconValue5 = data.list[5].weather[0].icon;
+        var tempConverted5 = Math.trunc(((tempValue5 - 273.15) * 9) / 5 + 32);
+
+        date5.innerHTML =
+          dateValue.getMonth() +
+          1 +
+          "/" +
+          (dateValue.getDate() + 5) +
+          "/" +
+          dateValue.getFullYear();
+        temp5.textContent = "Temp: " + tempConverted5 + "°";
+        wind5.innerHTML = "Wind: " + windValue5 + " mph";
+        humidity5.innerHTML = "Humidity: " + humidityValue5 + "%";
+
+        icon5.src =
+          "http://openweathermap.org/img/wn/" + iconValue5 + "@2x.png";
+      });
+    } else {
+      alert("error");
+    }
+  });
+};
+
+$(".searchBtn").click(function () {
+  console.log("click");
+
   getCityInfo();
 });
