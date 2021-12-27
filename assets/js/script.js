@@ -206,6 +206,9 @@ document.querySelector(".searchBar").addEventListener("keypress", function (e) {
   }
 });
 
+//* EVENT ON SEARCH BUTTON CLICK */
+searchBtn.addEventListener("click", getCityInfo);
+
 //* CREATES NEW PAST SEARCH BUTTONS */
 var pastSearchEl = function () {
   var city = document.querySelector(".searchBar").value;
