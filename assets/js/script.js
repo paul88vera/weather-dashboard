@@ -58,6 +58,7 @@ var weatherCardData = function (data) {
   humidity.innerHTML = "Humidity: " + humidityValue + "%";
 
   //* card 1 info
+  //** NEEDS A FOR LOOP / CURRENTLY REFACTORING */
   var tempValue1 = data.list[1].main.temp;
   var windValue1 = data.list[1].wind.speed;
   var humidityValue1 = data.list[1].main.humidity;
@@ -209,13 +210,36 @@ document.querySelector(".searchBar").addEventListener("keypress", function (e) {
 //* EVENT ON SEARCH BUTTON CLICK */
 searchBtn.addEventListener("click", getCityInfo);
 
+
+
 //* CREATES NEW PAST SEARCH BUTTONS */
 var pastSearchEl = function () {
   var city = document.querySelector(".searchBar").value;
   var newSearchEl = document.createElement("button");
-  aside.appendChild(newSearchEl);
   newSearchEl.textContent = city;
   newSearchEl.classList = "newBtn";
   newSearchEl.value = city;
-  newSearchEl.type = "button";
+  newSearchEl.setAttribute('onclick', "recentCityInfo()");
+  aside.appendChild(newSearchEl);
+
+};
+
+//* POPULATES INPUT TO RESEARCH RECENT CITY */
+var recentBtn = document.querySelector('.newBtn');
+
+var recentCityInfo = function() {
+  var recentValue = document.querySelector(".newBtn");
+  var cityValue = document.querySelector(".city");
+  // grab the value of the button
+  // put the value back into the input
+  // run the function getCityInfo
+  // don't create another recent button
+
+  
+  cityValue.value = recentValue.innerText;
+  getCityInfo();
+
+  console.log(recentValue);
+  console.log(cityValue);
+
 };
